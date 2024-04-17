@@ -1,0 +1,13 @@
+# 数据结构练习(C语言)
+***
+
+本仓库用于记录个人对数据结构的复习
+
+## 相关资料
+- **教材** 《数据结构C语言版第二版》 清华大学出版社 严蔚敏 吴伟名 编著
+- **教学视频** [数据结构与算法基础（青岛大学-王卓）_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1nJ411V7bd/?vd_source=ce2c64e2380b23fc8a0d20d49c88b6aa)
+
+## 目录
+
+- ch01_linear_list 线性表
+  - p1_array_linear_list.c 线性表的顺序实现
