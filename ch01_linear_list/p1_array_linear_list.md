@@ -1,3 +1,4 @@
+# 线性表抽象类型定义
 ```C
 ADT List { 
 	数据对象：D = { a_i | a_i 属于 Elemset, i=1,2,3,...,n,n >= 0}
@@ -29,14 +30,14 @@ ADT List {
 			操作结果：cur_e是L的数据元素，且不是第一个，则用pre_e返回前驱，操作失败
 			无定义
 		NextElem( L, cur_e, &next_e)
-			初始条件：线性表工已存在。
+			初始条件：线性表L已存在。
 			操作结果：若cur_e是L的数据元素，且不是最后一个，则用 next_e返回它的后继，
 			否则操作失败，next_e无定义。
 		ListInsert( &L, i, e)
 			初始条件：线性表L已存在，1≤i≤ListLength(L)+1。
-			操作结果:在工中第i个位置之前插入新的数据元素e,L的长度加1。
+			操作结果:在L中第i个位置之前插入新的数据元素e,L的长度加1。
 		ListDelete(&L, i, &e)
-			初始条件：线性表工已存在且非空，1≤i≤ListLength(L)。
+			初始条件：线性表L已存在且非空，1≤i≤ListLength(L)。
 			操作结果：删除L的第i个数据元素，并用e返回其值，L的长度减1。
 }ADT List
 ```
