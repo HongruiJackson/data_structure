@@ -22,7 +22,7 @@ typedef struct {
  * 打印线性表信息
  */
 void PrintInfo(SqlList L) {
-    printf("_____________\n");
+    printf("\n_____________\n");
     printf("ele:\n");
     for (int i = 0; i < L.length; ++i) {
         printf("%d", L.elem[i]);
@@ -148,24 +148,78 @@ Status NextElem(SqlList L, ElemType cur_e, ElemType* next_e) {
  * @param e
  * @return
  */
-Status ListInsert(SqlList* L, int i, ElemType e) {
-    //1. 判断i值，即插入位置合不合法
-    if (i<1 || i>L->length+1) return Err;
+Status ListInsert(SqlList* L, ElemType e,int i ) {
+    int position;// 插入的位置，不是索引值
+    //1. 判断i值，即插入位置合不合法，如果i为0，默认插入到末尾
+    if (i==0) position = L->length + 1;
+    else if (i<1 || i>L->length+1) return Err;
+    else position = i;
     //2. 当空间已经满了，则要进行扩容
     if (L->length >= L->list_size) {
         ElemType* new_base = (ElemType*) realloc(L->elem,(L->list_size+LIST_INCREMENT) * sizeof (ElemType));
         if (! new_base) return Err;
-        free(L->elem);
         L->elem = new_base;
         L->list_size = L->list_size+LIST_INCREMENT;
     }
     //3. 位置后移
+    for (int j = L->length-1; j >=position -1 ; j--) {
+        L->elem[j+1] = L->elem[j];
+    }
+    //4. 插入合适的位置
+    L->elem[position-1] = e;
+    //5. 更新长度
+    L->length++;
+    return OK;
+}
+
+/**
+ * 删除指定位置的元素
+ * @param L 线性表
+ * @param e 用来接收删除的元素
+ * @param i 元素位置
+ * @return
+ */
+Status ListDelete(SqlList* L, ElemType* e,int i) {
+    int position; // 元素位置，从1开始，不是索引值
+    //1. 判断i值，即插入位置合不合法，如果i为0，默认删除末尾的元素
+    if (i==0) position = L->length;
+    else if (i<1 || i>L->length+1) return Err;
+    else position = i;
+    //2. 获取元素
+    *e = L->elem[position-1];
+
+    //3. 移动位置
+    for (int j = position; j < L->length ; j++) {
+        L->elem[j - 1] = L->elem[j];
+    }
+    //4. 更新长度
+    L->length--;
+    return OK;
 
 }
+
+
 
 int main() {
     SqlList list;
     InitList(&list);
+
+    for (int i = 0; i < 20; ++i) {
+        ListInsert(&list,i,0);
+    }
+    PrintInfo(list);
+    ListInsert(&list,100,4);
+    ListInsert(&list,200,19);
+    PrintInfo(list);
+
+    ElemType e;
+    printf("\n_____________\n");
+    for (int i = 0; i < 10; ++i) {
+        ListDelete(&list,&e,0);
+        printf("e:%d",e);
+    }
+    ListDelete(&list,&e,4);
+    PrintInfo(list);
 
     DestroyList(&list);
 
