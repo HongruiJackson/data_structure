@@ -1,3 +1,6 @@
+/**
+ * Part1：数组实现线性表
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #define LIST_INIT_SIZE 10
