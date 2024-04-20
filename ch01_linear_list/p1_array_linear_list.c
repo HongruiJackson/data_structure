@@ -99,7 +99,7 @@ void DestroyList(SqlList* L) {
  }
 
  /**
-  * 查找相同元素的自然序列号
+  * 查找相同元素的自然序列号，没找到返回0
   * @param L
   * @param e
   * @return
