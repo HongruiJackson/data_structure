@@ -201,29 +201,56 @@ Status ListDelete(SqlList* L, ElemType* e,int i) {
 
 }
 
+/**
+ * 有序表的合并
+ * @return
+ */
 
+void UnionList(SqlList LA, SqlList LB, SqlList* LC) {
+    LC->elem = (ElemType*) malloc((LA.length + LB.length) * sizeof(ElemType));
+    int i = 0;
+    int j = 0;
+    while (i < LA.length && j < LB.length) {
+        if (LA.elem[i] <= LB.elem[j]) {
+            ListInsert(LC,LA.elem[i],0);
+            i++;
+        } else {
+            ListInsert(LC,LB.elem[j],0);
+            j++;
+        }
+    }
+
+    while (i<LA.length) {
+        ListInsert(LC,LA.elem[i],0);
+        i++;
+    }
+
+    while (j<LB.length) {
+        ListInsert(LC,LB.elem[j],0);
+        j++;
+    }
+
+
+
+}
 
 int main() {
-    SqlList list;
-    InitList(&list);
-
-    for (int i = 0; i < 20; ++i) {
-        ListInsert(&list,i,0);
+    SqlList LA;
+    SqlList LB;
+    SqlList LC;
+    InitList(&LA);
+    InitList(&LB);
+    for (int i = 0; i < 10; i = i+2) {
+        ListInsert(&LA,i,0);
     }
-    PrintInfo(list);
-    ListInsert(&list,100,4);
-    ListInsert(&list,200,19);
-    PrintInfo(list);
-
-    ElemType e;
-    printf("\n_____________\n");
-    for (int i = 0; i < 10; ++i) {
-        ListDelete(&list,&e,0);
-        printf("e:%d",e);
+    for (int i = 1; i < 18; i = i+2) {
+        ListInsert(&LB,i,0);
     }
-    ListDelete(&list,&e,4);
-    PrintInfo(list);
+    PrintInfo(LA);
+    PrintInfo(LB);
+    UnionList(LA,LB,&LC);
+    PrintInfo(LC);
 
-    DestroyList(&list);
+
 
 }
