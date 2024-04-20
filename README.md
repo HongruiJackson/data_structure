@@ -11,3 +11,4 @@
 
 - ch01_linear_list 线性表
   - p1_array_linear_list.c 线性表的顺序实现
+  - p2_singly_linked_list_with_head.c 线性表的带头单链表实现
