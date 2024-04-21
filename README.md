@@ -16,4 +16,5 @@
   - [p4_doubly_linked_list.c](ch01_linear_list/p4_doubly_linked_list.c) 双向链表
 
 - ch02_stack 栈
- 
+  - [p1_array_stack.c](ch02_stack/p1_array_stack.c) 栈的顺序实现
+  - [p2_linked_stack.c](ch02_stack/p2_linked_stack.c) 栈的链式实现
