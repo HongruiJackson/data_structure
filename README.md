@@ -21,3 +21,4 @@
 
 - ch03_queue 栈
   - [p1_array_queue.c](ch03_queue/p1_array_queue.c) 队列的顺序循环实现
+  - [p2_linked_queue.c](ch03_queue/p2_linked_queue.c) 队列的单链表实现
