@@ -18,3 +18,6 @@
 - ch02_stack 栈
   - [p1_array_stack.c](ch02_stack/p1_array_stack.c) 栈的顺序实现
   - [p2_linked_stack.c](ch02_stack/p2_linked_stack.c) 栈的链式实现
+
+- ch03_queue 栈
+  - [p1_array_queue.c](ch03_queue/p1_array_queue.c) 队列的顺序循环实现
