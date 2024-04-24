@@ -19,6 +19,8 @@
   - [p1_array_stack.c](ch02_stack/p1_array_stack.c) 栈的顺序实现
   - [p2_linked_stack.c](ch02_stack/p2_linked_stack.c) 栈的链式实现
 
-- ch03_queue 栈
+- ch03_queue 队列
   - [p1_array_queue.c](ch03_queue/p1_array_queue.c) 队列的顺序循环实现
   - [p2_linked_queue.c](ch03_queue/p2_linked_queue.c) 队列的单链表实现
+- ch04_string 串
+  - [p1_array_string.c](ch04_string/p1_array_string.c) 串的顺序实现，含KMP
