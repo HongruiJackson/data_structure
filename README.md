@@ -28,3 +28,6 @@
 
 - ch05_array
   - [p1_cross_linked_list.c](ch05_array/p1_cross_linked_list.c) 十字链表
+
+- ch06_tree
+  - [p1_array_tree.c](ch06_tree/p1_array_tree.c) 顺序存储表示二叉树
