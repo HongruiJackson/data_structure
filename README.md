@@ -22,5 +22,9 @@
 - ch03_queue 队列
   - [p1_array_queue.c](ch03_queue/p1_array_queue.c) 队列的顺序循环实现
   - [p2_linked_queue.c](ch03_queue/p2_linked_queue.c) 队列的单链表实现
+
 - ch04_string 串
   - [p1_array_string.c](ch04_string/p1_array_string.c) 串的顺序实现，含KMP
+
+- ch05_array
+  - [p1_cross_linked_list.c](ch05_array/p1_cross_linked_list.c) 十字链表
