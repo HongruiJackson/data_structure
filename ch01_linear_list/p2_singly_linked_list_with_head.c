@@ -9,8 +9,8 @@ typedef int Bool;
 #define Err -1
 
 typedef int Status;
-#define true 1;
-#define false 0;
+#define true 1
+#define false 0
 
 typedef int ElemType;
 typedef struct LNode {

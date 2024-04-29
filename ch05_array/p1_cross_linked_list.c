@@ -9,8 +9,8 @@ typedef int Status;
 #define ERROR -1
 
 typedef int Bool;
-#define true 1;
-#define false 0;
+#define true 1
+#define false 0
 
 typedef int ElemType;
 // 十字链表结点

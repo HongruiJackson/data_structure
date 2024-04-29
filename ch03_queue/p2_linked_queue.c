@@ -10,8 +10,8 @@ typedef int Status;
 #define Error -1
 
 typedef int Bool;
-#define true 1;
-#define false 0;
+#define true 1
+#define false 0
 
 typedef int ElemType;
 typedef struct QNode {

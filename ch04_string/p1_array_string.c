@@ -10,8 +10,8 @@ typedef int Status;
 #define ERROR -1
 
 typedef int Bool;
-#define true 1;
-#define false 0;
+#define true 1
+#define false 0
 
 typedef struct {
     char ch[STRING_MAX_LEN + 1];//留一位给'\0'
