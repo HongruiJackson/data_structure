@@ -1,4 +1,4 @@
-# 队列抽象类型定义
+# 串抽象类型定义
 ```C
 ADT String {
 	数据对象: D={ a1 | ai 属于 CharacterSet，i=1,2，…,n，n≥0}
