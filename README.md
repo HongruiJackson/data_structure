@@ -30,5 +30,5 @@
   - [p1_cross_linked_list.c](ch05_array/p1_cross_linked_list.c) 十字链表
 
 - ch06_tree
-  - [p1_array_tree.c](ch06_tree/p1_array_tree.c) 顺序存储表示二叉树
+  - [p1_binary_tree_array.c](ch06_tree/p1_binary_tree_array.c) 顺序存储表示二叉树
   - [p2_binary_tree_linked_list.c](ch06_tree/p2_binary_tree_linked_list.c) 单链表表示二叉树，先序、中序、后序遍历
