@@ -35,7 +35,7 @@ Status DestroyStack(LinkedStack * S) {
 
 // 判断栈是否为空
 Bool StackEmpty(LinkedStack S) {
-    if (S == NULL) return true
+    if (S == NULL) return true;
     else return false;
 }
 
