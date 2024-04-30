@@ -85,7 +85,7 @@ void ClearList(LinkedList *L) {
  * @return
  */
 Bool ListEmpty(LinkedList L) {
-    if (L->next == 0) return true
+    if (L->next == 0) return true;
     else return false;
 }
 
