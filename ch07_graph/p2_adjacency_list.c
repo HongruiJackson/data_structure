@@ -70,8 +70,9 @@ Status CreateUDN(ALGraph *G) {
         int k = LocateVex(*G,b);
         ArcNode * newNode1 = (ArcNode*) malloc(sizeof (ArcNode));
         ArcNode * newNode2 = (ArcNode*) malloc(sizeof (ArcNode));
-        newNode1->adj_vex = k;newNode1->info = &w;newNode1->next_arc=NULL;
-        newNode2->adj_vex = j;newNode2->info = &w;newNode2->next_arc=NULL;
+        newNode1->info = newNode2->info = (int *) malloc(sizeof (int ));
+        newNode1->adj_vex = k;*(newNode1->info) = w;newNode1->next_arc=NULL;
+        newNode2->adj_vex = j;*(newNode2->info) = w;newNode2->next_arc=NULL;
         ArcNode *p;
         if (G->vertices[j].first_arc == NULL || newNode1->adj_vex < G->vertices[j].first_arc->adj_vex) {
             newNode1->next_arc = G->vertices[j].first_arc;
@@ -100,12 +101,16 @@ Status CreateUDN(ALGraph *G) {
 
 
 
+    }
+    return OK;
+}
+
 void PrintGraph(ALGraph G) {
     for (int i = 0; i < G.vex_num; ++i) {
         printf("%3c| ",  G.vertices[i].data);
         ArcNode * p = G.vertices[i].first_arc;
         while (p != NULL) {
-            printf("%c",G.vertices[p->adj_vex].data);
+            printf("%c_%d",G.vertices[p->adj_vex].data,*(p->info));
             if(p->next_arc!=NULL) printf(" -> ");
             p = p->next_arc;
         }
@@ -114,6 +119,6 @@ void PrintGraph(ALGraph G) {
 }
 int main() {
     ALGraph G;
-    CreateUDN(&G);
+    CreateExampleUDN(&G);
     PrintGraph(G);
 }
