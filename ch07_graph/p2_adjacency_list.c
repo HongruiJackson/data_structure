@@ -166,6 +166,71 @@ Status CreateExampleUDN(ALGraph *G) {
     return OK;
 }
 
+// Prim算法
+// 辅助矩阵
+typedef struct {
+    VertexType data;
+    int low_cost;
+}closeEdgeMatrix[MAX_VERTEX_NUM];
+/**
+ * Prim算法求最小生成树
+ * @param G 图
+ * @param u 起始顶点
+ */
+void MiniSpanTree_PRIM(ALGraph G,VertexType u) {
+    closeEdgeMatrix closeEdge;
+    int k = LocateVex(G, u);
+    // 初始化辅助矩阵
+    for (int i = 0; i < G.vex_num; ++i) {
+        closeEdge[i].data = '$';
+        closeEdge[i].low_cost = INT_MAX;
+    }
+    ArcNode * p = G.vertices[k].first_arc;
+    while (p!=NULL) {
+        closeEdge[p->adj_vex].data = G.vertices[k].data;
+        closeEdge[p->adj_vex].low_cost = *(p->info);
+        p=p->next_arc;
+    }
+    closeEdge[k].data = '$';
+    closeEdge[k].low_cost = 0;
+
+
+
+    for (int i = 0; i < G.vex_num-1; ++i) {
+
+        //打印数组情况，用于检查
+        for (int z = 0; z < G.vex_num; ++z) {
+            printf("%c.%d ",closeEdge[z].data,closeEdge[z].low_cost);
+        }
+
+        int min = INT_MAX;
+        int index = G.vex_num;
+        for (int j = 0; j < G.vex_num; ++j) {
+            if (closeEdge[j].low_cost!=0) {
+                if(closeEdge[j].low_cost < min) {
+                    index = j;
+                    min = closeEdge[j].low_cost;
+                }
+            }
+        }
+        printf("%c->%c\n",closeEdge[index].data,G.vertices[index].data);
+        k = index;
+        closeEdge[k].data = '$';
+        closeEdge[k].low_cost = 0;
+
+        p = G.vertices[k].first_arc;
+        while (p!=NULL) {
+            if (*(p->info) < closeEdge[p->adj_vex].low_cost && closeEdge[p->adj_vex].low_cost != 0) {
+                closeEdge[p->adj_vex].data = G.vertices[k].data;
+                closeEdge[p->adj_vex].low_cost = *(p->info) ;
+            }
+            p = p->next_arc;
+        }
+    }
+
+}
+
+
 void PrintGraph(ALGraph G) {
     for (int i = 0; i < G.vex_num; ++i) {
         printf("%3c| ",  G.vertices[i].data);
@@ -178,8 +243,12 @@ void PrintGraph(ALGraph G) {
         printf("\n");
     }
 }
+
+
 int main() {
     ALGraph G;
     CreateExampleUDN(&G);
     PrintGraph(G);
+    MiniSpanTree_PRIM(G,'A');
+
 }
