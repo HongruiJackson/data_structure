@@ -119,6 +119,35 @@ void CreateExampleGraph(MGraph *G) {
 
 }
 
+void CreateExampleGraphDN(MGraph *G) {
+    //1. 输入顶点数和边数
+    G->vex_num = 6;
+    G->arc_num = 8;
+    //2. 存储顶点信息
+    char chars[] = {'A','B','C','D','E','F'};
+    for (int i = 0; i < G->vex_num; ++i) {
+        G->vex[i] = chars[i];
+    }
+    //3. 初始化邻接矩阵
+    G->graphKind = UDN;
+    for (int i = 0; i < G->vex_num; ++i) {
+        for (int j = 0; j < G->vex_num; ++j) {
+            G->arcs[i][j].data = INFINITY;
+        }
+    }
+    //4. 构造邻接矩阵
+    G->arcs[0][2].data = 10;
+    G->arcs[0][4].data = 30;
+    G->arcs[0][5].data = 100;
+    G->arcs[1][2].data = 5;
+    G->arcs[2][3].data = 50;
+    G->arcs[3][5].data = 10;
+    G->arcs[4][3].data = 20;
+    G->arcs[4][5].data = 60;
+
+
+}
+
 // 深度优先遍历
 void DFS(MGraph G, int v, int visited[]) {
     printf("%c ",G.vex[v]);
@@ -140,8 +169,8 @@ void DFSTraverse(MGraph G, int start) {
 
 int main() {
     MGraph G;
-    CreateExampleGraph(&G);
+    CreateExampleGraphDN(&G);
     PrintGraph(G);
-    DFSTraverse(G,0);
+
 };
 
