@@ -33,3 +33,7 @@
   - [p1_binary_tree_array.c](ch06_tree/p1_binary_tree_array.c) 顺序存储表示二叉树
   - [p2_binary_tree_linked_list.c](ch06_tree/p2_binary_tree_linked_list.c) 单链表表示二叉树，先序、中序、后序遍历
   - [p3_huffman_tree.c](ch06_tree/p3_huffman_tree.c) 数组构建哈夫曼树
+
+- ch07_graph
+  - [p1_adjacency_matrix.c](ch07_graph/p1_adjacency_matrix.c) 邻接矩阵（数组表示法）
+  - [p2_adjacency_list.c](ch07_graph/p2_adjacency_list.c) 邻接表
