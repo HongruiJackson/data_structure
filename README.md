@@ -41,3 +41,4 @@
 - ch08_search 查找
   - [p1_sequential_search.c](ch08_search/p1_sequential_search.c) 顺序查找
   - [p2_binary_search.c](ch08_search/p2_binary_search.c) 折半查找
+  - [p3_binary_sort_tree.c](ch08_search/p3_binary_sort_tree.c) 二叉排序树
