@@ -44,7 +44,7 @@ BSTree SearchBST_A(BSTree T,KeyType key) {
  * @return
  */
 Bool SearchBST_B(BSTree T,KeyType key,BSTree parent,BSTree * point) {
-    if (!T) {*point = parent; return false;} // 查找不成动的时候，返回双亲结点的位置，进行插入，如果是空树，那么由于初始值的设置就会变为NULL，故在插入的函数中可以进行判断
+    if (!T) {*point = parent; return false;} // 查找不成动的时候，返回双亲结点的位置，进行插入，如果是空树，那么由于初始值的设置就会变为NULL，故在插入的函数中可以进行判断，感觉二级指针可以优化
     else if (key == T->data.key) {
         *point = T;
         printf("key:%d->%p\n",key,*point); // 用于测试
