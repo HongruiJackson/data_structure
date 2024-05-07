@@ -1,5 +1,5 @@
 /**
-* Part2: 二叉排序树
+* Part3: 二叉排序树
 */
 #include <stdio.h>
 #include <stdlib.h>
