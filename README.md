@@ -42,3 +42,4 @@
   - [p1_sequential_search.c](ch08_search/p1_sequential_search.c) 顺序查找
   - [p2_binary_search.c](ch08_search/p2_binary_search.c) 折半查找
   - [p3_binary_sort_tree.c](ch08_search/p3_binary_sort_tree.c) 二叉排序树
+  - [p4_avl_tree.c](ch08_search/p4_avl_tree.c) 二叉平衡树（插入）
