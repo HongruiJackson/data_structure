@@ -73,7 +73,7 @@ void DestroyList(SqlList* L) {
   * @return
   */
  Bool ListEmpty(SqlList L) {
-     if (L.length == 0) return true
+     if (L.length == 0) return true;
      else return false;
  }
 
