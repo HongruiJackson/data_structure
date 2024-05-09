@@ -39,7 +39,7 @@ void InitSqlList(SqList* sqList) {
 void InitExampleList(SqList * sqList) {
     //0位置为哨兵
     int array[] = {-1,38,65,97,38,13,27,90,43,39,59};
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i <= 10; ++i) {
         sqList->r[i].key = array[i];
     }
     sqList->length = 10;
@@ -61,6 +61,28 @@ void StraightInsertSort(SqList* sqList) {
     }
 }
 
+void BinaryInsertSort(SqList* sqList) {
+    int low;
+    for (int i = 2; i <= sqList->length; ++i) {
+        low = 1;
+        int high = i-1;
+        sqList->r[0].key = sqList->r[i].key;
+        while (low <= high) {
+            int mid = (low+high)/2;
+            if (sqList->r[mid].key == sqList->r[0].key) {
+                low = mid+1;
+                break;
+            } else if (sqList->r[mid].key < sqList->r[0].key) low = mid+1;
+            else high = mid -1;
+        }
+        for (int j = i-1; j >= low ; --j) {
+            sqList->r[j+1] = sqList->r[j];
+        }
+        sqList->r[low].key = sqList->r[0].key;
+
+    }
+}
+
 void PrintInfo(SqList sqList, char name[]) {
     printf("%s: ",name);
     for (int i = 1; i <= sqList.length; ++i) {
@@ -72,6 +94,11 @@ void PrintInfo(SqList sqList, char name[]) {
 int main() {
     SqList sqList;
     InitExampleList(&sqList);
+    PrintInfo(sqList,"original");
     StraightInsertSort(&sqList);
-    PrintInfo(sqList, "straight_insertion_sort");
+    PrintInfo(sqList,"straight_insertion_sort");
+
+    InitExampleList(&sqList);
+    BinaryInsertSort(&sqList);
+    PrintInfo(sqList, "binary_insertion_sort");
 };
