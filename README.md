@@ -43,3 +43,6 @@
   - [p2_binary_search.c](ch08_search/p2_binary_search.c) 折半查找
   - [p3_binary_sort_tree.c](ch08_search/p3_binary_sort_tree.c) 二叉排序树
   - [p4_avl_tree.c](ch08_search/p4_avl_tree.c) 二叉平衡树（插入）
+
+- ch09_sort 排序
+  - [p1_insertion_sort.c](ch09_sort/p1_insertion_sort.c) 插入排序（直接插入排序）
