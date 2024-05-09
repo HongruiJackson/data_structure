@@ -45,4 +45,4 @@
   - [p4_avl_tree.c](ch08_search/p4_avl_tree.c) 二叉平衡树（插入）
 
 - ch09_sort 排序
-  - [p1_insertion_sort.c](ch09_sort/p1_insertion_sort.c) 插入排序（直接插入排序）
+  - [p1_insertion_sort.c](ch09_sort/p1_insertion_sort.c) 插入排序（直接插入排序，折半插入排序）
