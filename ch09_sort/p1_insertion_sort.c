@@ -33,10 +33,23 @@ void InitSqlList(SqList* sqList) {
 }
 
 /**
+ *
+ * @param sqList
+ */
+void InitExampleList(SqList * sqList) {
+    //0位置为哨兵
+    int array[] = {-1,38,65,97,38,13,27,90,43,39,59};
+    for (int i = 0; i < 10; ++i) {
+        sqList->r[i].key = array[i];
+    }
+    sqList->length = 10;
+}
+
+/**
  * 直接插入排序
  * @param sqList
  */
-void InsertSort(SqList* sqList) {
+void StraightInsertSort(SqList* sqList) {
     for (int i = 2; i <= sqList->length; ++i) {
         // 设置哨兵
         sqList->r[0] = sqList->r[i];
@@ -48,7 +61,8 @@ void InsertSort(SqList* sqList) {
     }
 }
 
-void PrintInfo(SqList sqList) {
+void PrintInfo(SqList sqList, char name[]) {
+    printf("%s: ",name);
     for (int i = 1; i <= sqList.length; ++i) {
         printf("%d ",sqList.r[i].key);
     }
@@ -57,7 +71,7 @@ void PrintInfo(SqList sqList) {
 
 int main() {
     SqList sqList;
-    InitSqlList(&sqList);
-    InsertSort(&sqList);
-    PrintInfo(sqList);
+    InitExampleList(&sqList);
+    StraightInsertSort(&sqList);
+    PrintInfo(sqList, "straight_insertion_sort");
 };
