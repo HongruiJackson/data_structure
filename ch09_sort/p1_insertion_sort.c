@@ -61,6 +61,10 @@ void StraightInsertSort(SqList* sqList) {
     }
 }
 
+/**
+ * 折半插入排序
+ * @param sqList
+ */
 void BinaryInsertSort(SqList* sqList) {
     int low;
     for (int i = 2; i <= sqList->length; ++i) {
@@ -83,6 +87,55 @@ void BinaryInsertSort(SqList* sqList) {
     }
 }
 
+/**
+ * 2-路插入排序
+ * @param sqList
+ */
+void TwoWayInsertSort(SqList* sqList) {
+    int first = 0;
+    int final = 0;
+    KeyType tempKey[sqList->length];
+    tempKey[first] = sqList->r[1].key;
+    int length = sqList->length;
+    for (int i = 2; i <= length; ++i) {
+        if(sqList->r[i].key <= tempKey[first]) tempKey[first = (first-1+length)%length] = sqList->r[i].key; // 比first小插入在first前
+        else if(sqList->r[i].key > tempKey[final]) tempKey[final = (final+1+length)%length] = sqList->r[i].key; // 比final大插入在final后面
+        else { // 如果在之间用折半查找找到合适的位置
+            int low = first;
+            int high = final;
+            int mid;
+            while (low != (high+1)%length) {
+                if (low > high) mid = (low+high+length)/2%length;
+                else mid = (low+high)/2;
+                if (tempKey[mid]==sqList->r[i].key) {
+                    low = (mid+1+length)%length;
+                    break;
+                } else if (tempKey[mid] < sqList->r[i].key) low = (mid+1+length)%length;
+                else high = (mid-1+length)%length;
+            }
+            // 后移
+            if (low >=0 && low <=final) {
+                for (int j = final; j >= low ; --j) {
+                    tempKey[j+1] = tempKey[j];
+                }
+                tempKey[low]= sqList->r[i].key;
+                final = (final+1)%length;
+            } else {
+                for (int j = first; j < low; ++j) {
+                    tempKey[j-1] = tempKey[j];
+                }
+                tempKey[low-1]= sqList->r[i].key;
+                first = (first-1)%length;
+            }
+        }
+    }
+
+    for (int i = 1; i <= sqList->length ; ++i) {
+        sqList->r[i].key = tempKey[first];
+        first = (first+1) % length;
+    }
+}
+
 void PrintInfo(SqList sqList, char name[]) {
     printf("%s: ",name);
     for (int i = 1; i <= sqList.length; ++i) {
@@ -101,4 +154,10 @@ int main() {
     InitExampleList(&sqList);
     BinaryInsertSort(&sqList);
     PrintInfo(sqList, "binary_insertion_sort");
+
+    InitExampleList(&sqList);
+    TwoWayInsertSort(&sqList);
+    PrintInfo(sqList, "two_way_insertion_sort");
+
+
 };
