@@ -47,3 +47,4 @@
 - ch09_sort 排序
   - [p1_insertion_sort.c](ch09_sort/p1_insertion_sort.c) 插入排序（直接插入排序，折半插入排序，2-路插入排序）
   - [p2_exchange_sort.c](ch09_sort/p2_exchange_sort.c) 交换排序（冒泡排序，快速排序）
+  - [p3_selection_sort.c](ch09_sort/p3_selection_sort.c) 选择排序（简单选择排序）
