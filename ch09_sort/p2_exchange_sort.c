@@ -43,6 +43,26 @@ void BubbleSort(SqList * sqList) {
     }
 }
 
+int Partition(SqList *L, int low, int high) {
+    int temp = L->r[low].key; // 枢纽点
+    while (low < high) {
+        while (low<high && L->r[high].key>=temp) high--;
+        L->r[low].key = L->r[high].key;
+        while (low<high && L->r[low].key<=temp) low++;
+        L->r[high].key = L->r[low].key;
+    }
+    L->r[low].key = temp;
+    return low;
+}
+
+void QuickSort(SqList *L, int low, int high) {
+    if (low <high) {
+        int pivot_loc = Partition(L,low,high);
+        QuickSort(L,low,pivot_loc-1);
+        QuickSort(L,pivot_loc+1,high);
+    }
+}
+
 void PrintInfo(SqList sqList, char name[]) {
     printf("%s: ",name);
     for (int i = 0; i < sqList.length; ++i) {
@@ -56,5 +76,9 @@ int main() {
     InitExampleList(&sqList);
     BubbleSort(&sqList);
     PrintInfo(sqList, "bubble_sort");
+
+    InitExampleList(&sqList);
+    QuickSort(&sqList, 0, sqList.length-1);
+    PrintInfo(sqList, "quick_sort");
 
 }
